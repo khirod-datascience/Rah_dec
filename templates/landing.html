@@ -1,13 +1,40 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel= "stylesheet" href="/static/css/landing.css?ver=1.0">
+        <link rel= "stylesheet" href="/static/css/indexmedia.css?ver=1.0">
+        <link rel= "stylesheet" href="/static/css/swiper-bundle.min.css?ver=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Manrope:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" ></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+        <script src="/static/js/swiper-bundle.min.js"></script>
+        <script src="/static/js/main.js?ver=1.0"></script>
+
+
+        <title>RAH - Rapid Access Healthcare</title>
+    </head>
 </head>
 
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+<body style="width: auto;" >
+    
+    <a data-toggle="tooltip"data-placement="left" title="108" href="tel:108" class="floatcall">
+        <img   src="/static/images/icons/Group 7117.png" alt="Contact" class="phone"  style="margin-top: 70px;">
+       
+    </a>
+    
 
 <body style="margin: 0;">
 
@@ -655,10 +682,178 @@
 
 
 
-{% endblock %}
+<input id="loctext"  type='text' name='loc' style="visibility:hidden">
+   
+
+<p id="demo" style="visibility:hidden"></p>
+<!-- Foooterrrrrrrr Start---------- -->
+
+
+<div class="footerarea">
+
+<div class="container-fluid" style="margin-top: 180px;background-color: white;height: 105px;">
+    
+                    
+<div class=" cardmedia card footercard" style="width: 374px;text-align: none;align-items: baseline;">
+    <div class="footercardtext1">Emergency number</div>
+    <div class="footer-card-phone">
+        <img src="/static/images/icons/PhoneCall-footer.png" alt="call" >
+        108
+        <img src="/static/images/icons/Line.png" alt="call" >
+        <img class="footercardlogo" src="/static/images/icons/footer-logo.png" alt="call" >
+        
+    </div>
+    <div class="footercardtext2">Sweat is 99% water combined with a tiny amount of salt, proteins Sweat is 99% water combined...
+
+    </div>
+    <br><br>
+    <div class="footer-card-mail">
+    <img src="/static/images/icons/mail.png" alt="call" >
+    rah1234@gmail.com
+</div>
+
+
+<!-- 
+<div class="detail detail2">
+    <div class="columns">
+
+        <div class="column">
+            <li><strong>Company</strong></li>
+            <li>About Us</li>
+            <li>Blog</li>
+            <li>Contact us</li>
+            <li>Pricing</li>
+            <li>Testimonials</li>
+        </div>
+
+
+
+        <div class="column">
+            <li><strong>Support</strong></li>
+            <li>Help Center</li>
+            <li>Terms of service</li>
+            <li>Legal</li>
+            <li>Privacy Policy</li>
+            <li>Status</li>
+        </div>
+
+    </div>
+</div> -->
+     </div>
+
+</div>
+
+<div class="footerback">
+<div class="container-fluid " style="background-color: #16292A;height: 401px; ">
+</div></div>
+</div>
+
+
+
+
+
+<script>
+
+function myFunction() {
+var x = document.getElementById("myTopnav");
+if (x.className === "topnav" ) {
+x.className += " responsive";
+} else {
+x.className = "topnav";
+}
+}
+document.getElementById("second").onclick = function() {
+var x = document.getElementById("submenu");
+if(x.style.display === "none"){
+document.getElementById("submenu").style.display = "block";
+
+}
+else{
+document.getElementById("submenu").style.display = "none";
+
+}
+}
+</script>
+
+
+<script> 
+var swiper = new Swiper(".slide-content", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+pagination: {
+el: ".swiper-pagination",
+clickable: true,
+dynamicBullets: true,
+},
+navigation: {
+nextEl: ".swiper-button-next",
+prevEl: ".swiper-button-prev",
+},
+
+// breakpoints:{
+// 0: {
+// slidesPerView: 1,
+// },
+// 520: {
+// slidesPerView: 2,
+// },
+// 950: {
+// slidesPerView: 3,
+// },
+// },
+});
+
+
+
+
+
+
+
+var swiper = new Swiper(".slide-content1", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+pagination: {
+el: ".swiper-pagination",
+clickable: true,
+dynamicBullets: true,
+},
+navigation: {
+nextEl: ".swiper-button-next1",
+prevEl: ".swiper-button-prev1",
+},
+
+// breakpoints:{
+// 0: {
+// slidesPerView: 1,
+// },
+// 520: {
+// slidesPerView: 2,
+// },
+// 950: {
+// slidesPerView: 3,
+// },
+// },
+});
+
+
+</script>
+
+
+
+
+
 
 
 
 
 </body>
+
 </html>
