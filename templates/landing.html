@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+</head>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body style="margin: 0;">
+
+            
+<div class="topnav" id="myTopnav">
+    <a href="#">
+        <img src="/static/images/icons/rahlogo.png" alt="RAH Logo" class="rahlogo">
+    </a>
+    <div style="
+    margin-top: 5px;">
+    <a href="#" style="margin-left: 8%;"  class="active">Hospitals</a>
+    <!-- <a href="#">Consultance</a>
+    <a href="#">Blood banks</a>
+    <a href="#">Diagnostics</a>
+    <a href="#">Ambulance</a>
+    <a href="#" style="color: #FF5353;">Emergency</a> -->
+    <!-- <a href="#home" class="active">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a> -->
+</div>
+
+<div style="margin-left: 78%;">
+<a href="" class="search-icon"> <img src="/static/images/icons/searchlogo.png" alt="Menu Icon" ></a>
+            <a href="" style="   padding: 6px 30px;    "><img src="/static/images/icons/loginbutton.png" alt="Menu Icon" style="height: 48px;" ></a>      
+</div>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i></a>
+    </div>
+
+<div class="hero">
+
+    <img src="/static/images/download.jpg" style="width: 100%;"  >
+    <img src="/static/images/icons/Group 7117.png" alt="Contact" class="phone">
+    <h1 class="text1">Comprehensive healthcare information curated for all</h1>
+
+    <div class="search">
+        <div id="sch"><label for="loc">Your Location</label><img src="/static/images/icons/Group 7284.png" alt="" class="loc-icon1">
+            <input class="searchinputtext" type="text" id="loc" name="Location" placeholder="Search your area">
+        </div>
+        <div id="sch"><label for="loc">Your Location</label><img src="/static/images/icons/Group 7284.png" alt="" class="loc-icon1">
+            <input class="searchinputtext"type="text" id="loc" name="Location" placeholder="Search your area">
+        </div>
+        <div id="sch"><label for="loc">Your Location</label><img src="/static/images/icons/Group 7284.png" alt="" class="loc-icon1">
+            <input class="searchinputtext"type="text" id="loc" name="Location" placeholder="Search your area">
+        </div>
+        <div id="schbtn">
+            <button id= "button1" type="button" name="Search">
+                <p class="schtext" >Search
+                <i class="fa fa-search"></i></p>
+                <!-- <img src="images/searchlogo.png" alt="" class="sch-icon1"></p>   -->
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<div class="info">
+    <h6>*Search hospitals by location, department, symptoms, doctor, etc. </h6>
+</div>
+
+<div class="row4">
+    <a href="">
+        <img src="/static/images/icons/Rectangle 908.png" alt="">
+    </a>
+    <a href="">
+        <img src="/static/images/icons/Rectangle 908.png" alt="">
+    </a>
+    
+</div>
+
+<!-- <div class="section2">
+    <h1 class="text2">Choose your problem organ</h1>
+<div class="dropdown">
+    <nav class="choice-list">
+        <ul class="menu">
+            <li class="menulist"><label for="mi-1" id="first" class="first">External Body System<span class="fas fa-caret-down "></span></label></li>
+            <li  class="menulist"><label for="mi-2" id="second" class="second">HEAD AND NECK<span class="fas fa-caret-down "></span></label>
+                <ul id="submenu" class="submenu ">
+                    <li class="sublist"><a href="#">Head</a></li>
+                    <li class="sublist"><a href="#">Eyes</a></li>
+                    <li class="sublist"><a href="#">Ear</a></li>
+                    <li class="sublist"><a href="#">Nose</a></li>
+                    <li class="sublist"><a href="#">Mouth</a></li>   
+                </ul>
+            </li>
+            <li class="menulist"><label for="mi-3" id="third" class="third">ARM AND HAND<span class="fas fa-caret-down"></span></label></li>
+            <li class="menulist"><label for="mi-4" id="fourth"  class="fourth">CHEST AND ABDOMEN<span class="fas fa-caret-down"></span></label></li>
+            <li class="menulist"><label for="mi-5" id="fifth" class="fifth">LEG AND FOOT<span class="fas fa-caret-down"></span></label></li>
+        </ul>
+    </nav>
+</div>
+</div> -->
+
+
+
+
+
+<div class="hospitalnear">
+    <h1 class="hosphead" >Hospitals near you</h1>
+    <p class="hosptxt">Fetch details of all the hospitals nearby you and select the best services from a wide range of options.</p>
+</div>
+
+
+<div>
+
+<div class="container-fluid" style="margin-top: 180px;background-color: white;height: 185px;">
+    
+	<div class="row">
+		<div class="col-md-1">
+            <a style="color: #24292E;width: fit-content;" class=" arrowhead swiper-button-next"  role="button" data-slide="prev">
+                <i style="padding: 18px;" class="fa fa-arrow-left"></i>
+            </a>
+		</div>
+
+        <!-- corousel Start--- -->
+		<div class="col-md-10">
+
+            <div class="slide-container swiper">
+
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        
+<!--                 
+                        {% for hospital in hospitallist %}
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="{{hospital.logo}}">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">{{hospital.hospital_name}}</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    {{hospital.contact_number}}
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                        {% endfor %}  -->
+                
+                        <div class="card cardsize swiper-slide" >
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                    
+                        
+                
+                        <div class="card cardsize swiper-slide">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                        </div>
+                       
+                
+                
+                
+                        
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                
+                        
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                
+                        
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                        
+                
+                
+                
+                
+                
+    
+
+
+
+
+
+
+                
+                
+                    </div>
+                </div>
+<!--     
+<div class="swiper-button-next swiper-navBtn"></div>
+<div class="swiper-button-prev swiper-navBtn"></div>
+<div class="swiper-pagination"></div> -->
+
+</div>
+</div>
+        <!-- corousel Ends Here...  href="#carouselExampleIndicators2" --- -->
+		<div class="col-md-1">
+
+            <div style="color: #24292E;width: fit-content;" class="arrowhead swiper-button-prev swiper-navBtn" role="button" data-slide="next">
+                <i style="padding: 18px;" class="fa fa-arrow-right"></i>
+            </div>
+		</div>
+    
+	</div>
+</div>
+
+</div>
+
+
+<div class="container-fluid" style="background-color: #16292A;height: 476px;">
+</div>
+<!-- Corousel container ends here -->
+<br>
+<br>
+<!-- ##########--------- Best Rated Hospital---------------################ -->
+
+
+<div class="hospitalnear">
+    <h1 class="hosphead" >Best Rated Hospital</h1>
+    <p class="hosptxt">Know all the top ranking hospitals in your state with detailed overview 
+        and patients’ reviews, at a glance.</p>
+</div>
+
+
+
+<div class="container-fluid" style="margin-top: 180px;background-color: white;height: 185px;">
+    
+	<div class="row">
+		<div class="col-md-1">
+            <a style="color: #24292E;width: fit-content;" class=" arrowhead swiper-button-next"  role="button" data-slide="prev">
+                <i style="padding: 18px;" class="fa fa-arrow-left"></i>
+            </a>
+		</div>
+
+        <!-- corousel Start--- -->
+		<div class="col-md-10">
+
+            <div class="slide-container swiper">
+
+                <div class="slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        
+                
+                
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                
+                
+                        <div class="card cardsize swiper-slide" >
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                    
+                        
+                
+                        <div class="card cardsize swiper-slide">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                        </div>
+                       
+                
+                
+                
+                        
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                
+                        
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                
+                        
+                
+                        <div class="card cardsize swiper-slide ">
+                            <img class="img-fluid" alt="100%x280" src="/static/images/Rectangle 841.png">
+                            <div class="card-body" >
+                                <div class="depbox"> <div class="text">CARDIOLOGY</div> </div>
+                                <h4 class="card-title">SUM Hospital</h4>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/location.png" alt="location" >
+                                    
+                                    4 kms away
+                                </div>
+                                <div class="card-text">
+                                    <img src="/static/images/icons/bed.png" alt="beds" >
+                                    400 Hospital Beds
+                                    
+                                </div>
+                
+                                <div class="card-phone">
+                                    <img src="/static/images/icons/PhoneCall.png" alt="call" >
+                                    +91 9807854654
+                                    
+                                </div>
+                                <div class="explore">
+                                <a href="">Explore
+                                    <img src="/static/images/icons/arrow-right.png" alt="arrow" >
+                                </a>
+                                
+                            </div>
+                            </div>
+                
+                        </div>
+                
+                        
+                
+                
+                
+                
+                
+    
+
+
+
+
+
+
+                
+                
+                    </div>
+                </div>
+<!--     
+<div class="swiper-button-next swiper-navBtn"></div>
+<div class="swiper-button-prev swiper-navBtn"></div>
+<div class="swiper-pagination"></div> -->
+
+</div>
+</div>
+        <!-- corousel Ends Here...  href="#carouselExampleIndicators2" --- -->
+		<div class="col-md-1">
+
+            <div style="color: #24292E;width: fit-content;" class="arrowhead swiper-button-prev swiper-navBtn" role="button" data-slide="next">
+                <i style="padding: 18px;" class="fa fa-arrow-right"></i>
+            </div>
+		</div>
+    
+	</div>
+</div>
+
+
+
+
+<div class="container-fluid" style="background-color: #16292A;height: 476px;">
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

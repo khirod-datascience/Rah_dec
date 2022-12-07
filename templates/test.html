@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Getting Clients IP</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script>
+
+	
+	
+	/* Add "https://api.ipify.org?format=json" statement
+			this will communicate with the ipify servers in
+			order to retrieve the IP address $.getJSON will
+			load JSON-encoded data from the server using a
+			GET HTTP request */
+				
+	
+	</script>
+<!-- <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script> -->
+</head>
+
+<body>
+
+	<p id="errorstat"></p>
+	<center>
+		<h1>GeeksforGeeks</h1>
+		<h3>Public IP Address of user is:</h3>
+		<p id="loctext"></p>
+		<input id="locs"  type='text'  >
+	</center>
+	
+	<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+      x.innerHTML = position.coords.latitude + 
+      "," + position.coords.longitude;
+      document.getElementById("loctext").value =x.innerHTML
+    //   console.log(x.innerHTML)
+  
+    let loctext = document.getElementById("loctext").value;
+
+    console.log(loctext)
+    
+
+    if(!window.location.hash) {
+    const elemA = loctext;
+    var csrfmiddlewaretoken = '{{ csrf_token }}'  
+    var url = '/landing/'+ elemA;
+    // history.pushState({}, "", url);
+    var csrfmiddlewaretoken = '{{ csrf_token }}'  
+    // window.location = window.location + '#loaded' + csrfmiddlewaretoken;
+    // window.location.reload();
+    // window.location=window.location.href(url)
+    // window.location.reload();
+    window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+}
+
+    }
+
+
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+
+		var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var geolocation = JSON.parse(xhttp.responseText).location;
+						var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+						console.log(xhttp.responseText);
+						var geolat = geolocation.lat;
+						var geolang = geolocation.lng;
+						console.log('located' + geolat +',' +geolang);
+						console.log('accurate' + geoaccuracy + 'meters');
+						var loctext = geolat +',' +geolang
+						console.log(loctext)
+						if(!window.location.hash) {
+							const elemA = loctext;
+							var csrfmiddlewaretoken = '{{ csrf_token }}'  
+							var url = '/landing/'+ elemA;
+							// history.pushState({}, "", url);
+							console.log(url)
+							// window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+							}
+					}
+				};
+				xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+				xhttp.send();
+
+				var xy="please enable location for better result";
+				// console.log(xy);
+				var stat=document.getElementById(errorstat);
+				stat.innerHTML = xy;
+
+      break;
+    case error.POSITION_UNAVAILABLE:
+	var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var geolocation = JSON.parse(xhttp.responseText).location;
+						var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+						console.log(xhttp.responseText);
+						var geolat = geolocation.lat;
+						var geolang = geolocation.lng;
+						console.log('located' + geolat +',' +geolang);
+						console.log('accurate' + geoaccuracy + 'meters');
+						var loctext = geolat +',' +geolang
+						console.log(loctext)
+						if(!window.location.hash) {
+							const elemA = loctext;
+							var csrfmiddlewaretoken = '{{ csrf_token }}'  
+							var url = '/landing/'+ elemA;
+							// history.pushState({}, "", url);
+							console.log(url)
+							window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+							}
+					}
+				};
+				xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+				xhttp.send();
+
+      break;
+    case error.TIMEOUT:
+	var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var geolocation = JSON.parse(xhttp.responseText).location;
+						var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+						console.log(xhttp.responseText);
+						var geolat = geolocation.lat;
+						var geolang = geolocation.lng;
+						console.log('located' + geolat +',' +geolang);
+						console.log('accurate' + geoaccuracy + 'meters');
+						var loctext = geolat +',' +geolang
+						console.log(loctext)
+						if(!window.location.hash) {
+							const elemA = loctext;
+							var csrfmiddlewaretoken = '{{ csrf_token }}'  
+							var url = '/landing/'+ elemA;
+							// history.pushState({}, "", url);
+							console.log(url)
+							window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+							}
+					}
+				};
+				xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+				xhttp.send();
+				x.innerHTML = "please enable location for better result"
+      break;
+    case error.UNKNOWN_ERROR:
+	var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+						var geolocation = JSON.parse(xhttp.responseText).location;
+						var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+						console.log(xhttp.responseText);
+						var geolat = geolocation.lat;
+						var geolang = geolocation.lng;
+						console.log('located' + geolat +',' +geolang);
+						console.log('accurate' + geoaccuracy + 'meters');
+						var loctext = geolat +',' +geolang
+						console.log(loctext)
+						if(!window.location.hash) {
+							const elemA = loctext;
+							var csrfmiddlewaretoken = '{{ csrf_token }}'  
+							var url = '/landing/'+ elemA;
+							// history.pushState({}, "", url);
+							console.log(url)
+							window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+							}
+					}
+				};
+				xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+				xhttp.send();
+				x.innerHTML = "please enable location for better result"
+      break;
+  }
+}
+</script>
+
+<script>
+
+
+
+</script>
+
+
+</body>
+
+</html>

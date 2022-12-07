@@ -1,0 +1,207 @@
+
+@media screen and (max-width: 800px) {
+
+    .heroimage{
+        width: 100%;
+        height: 465px;
+        margin-top: 73px;
+    }
+    .footerback{
+    width: 100%;
+    }
+   
+
+.phone{
+    left: 92%;
+}
+.text1{
+    margin-top: -161px;
+    width: 299px;
+    /* text-align: center; */
+    /* margin-left: 75px; */
+}
+.search{
+    top: 206px;
+    left: 12.3%;
+    width: 370px;
+    height: 189px;
+    text-align: left;
+}
+.searchpagesearch{
+    top: 146px;
+    left: 17.3%;
+    width: 370px;
+    height: 189px;
+    text-align: left;
+}
+
+#schbtn {
+    position: absolute;
+    right: 0.55%;
+    top: 36.33%;
+}
+
+.info{
+    display: none;
+}
+.hosphead {
+
+    font-size: 38.96px;
+    
+}
+.searchtext1{
+    font-size: 47px;
+    margin-top: 45px;
+}
+
+
+.hosptxt{
+    width: 80%;
+    margin-left: 53px;
+    
+}
+.hospitalnear{
+
+    left: 0px;
+}
+.cardmedia{
+    margin-left: -115px;
+}
+.image-grid .card {
+    width: 44%;
+}
+.card .card-img {
+    width: 192px;
+}
+
+
+.tabs .tab {
+    display: none;
+    width: 98%;
+}
+
+/* .rahlogonav{
+margin-top: -365px;
+} */
+
+
+}
+
+@media screen and (max-width: 800px) {
+    .topnav{
+        margin-right: 32px;
+    margin-left: 0px;
+    float: right;
+    }
+    .topnav a {display: none;}
+    .topnav a.icon {
+      float: left;
+      display: block;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+
+  
+@media screen and (max-width: 450px) {
+    .search {
+    left: 2.3%;
+    width: 347px;
+    }
+
+.text1 {
+    width: 216px;
+}
+
+.hosphead {
+    font-size: 31.96px;
+}
+
+.hosptxt {
+    font-size: 13.25px;
+}
+.cardimg {
+    width: 275px;
+    height: 184px;
+}
+
+.card-title {
+    width: 265px;
+
+    font-size: 22.63px;
+
+}
+.slidbtnwid{
+    width: 26px;
+}
+
+.nextbtn{
+
+    margin-top: 208px;
+    width: 26px;
+}
+
+.cardmedia {
+    margin-left: -217px;
+}
+.image-grid .card {
+    width: 41%;
+}
+.cardleft{
+    margin-left: -26px;
+    margin-top: 27px;
+}
+.card .card-img {
+    width: 90%;
+}
+.phone {
+    left: 88%;
+}
+.searchpagesearch {
+    /* top: 146px; */
+    left: -0.7%;
+
+}
+.map{
+    margin-left: 21px;
+}
+.card .tag {
+
+    margin-left: 21px;
+}
+.right {
+    width: 100%; 
+}
+
+.hospview {
+    display: block;
+
+}
+.searchtext1 {
+    font-size: 39px;
+    
+}
+.hospbanner {
+    height: 193px;
+    width: 272px;
+}
+.dropdown {
+    
+    padding-right: 0px;
+}
+
+  }
+

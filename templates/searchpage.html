@@ -1,0 +1,626 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel= "stylesheet" href="/static/css/landing.css?ver=4.0">
+        <link rel= "stylesheet" href="/static/css/indexmedia.css?ver=4.0">
+        <link rel= "stylesheet" href="/static/css/swiper-bundle.min.css?ver=3.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Manrope:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" ></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+        <script src="/static/js/swiper-bundle.min.js"></script>
+        <script src="/static/js/main.js?ver=1.0"></script>
+
+
+        <title>RAH - Rapid Access Healthcare</title>
+
+
+        
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA&libraries=places"></script>
+        <script>
+            function initialize() {
+              var input = document.getElementById('searchTextField');
+              var autocomplete = new google.maps.places.Autocomplete(input);
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    var place = autocomplete.getPlace();
+                    // document.getElementById('city2').value = place.name;
+                    document.getElementById('Latlng').value = place.geometry.location.lat() + ',' + place.geometry.location.lng();
+                    // document.getElementById('cityLng').value = place.geometry.location.lng();
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+</head>
+
+<body style="width: auto;" onload ="getLocationhosp()" >
+    
+    <a data-toggle="tooltip"data-placement="left" title="108" href="tel:108" class="floatcall">
+        <img   src="/static/images/icons/Group 7117.png" alt="Contact" class="phone"  style="margin-top: 70px;">
+       
+    </a>
+   
+        
+    <div class="mainnav">
+        <div class="rahlogonav">
+            <a href="/">
+                <img onclick="change(foo, bar)" src="/static/images/icons/rahlogo.png" alt="RAH Logo" class="rahlogo">
+            </a>
+        </div>
+        <div class="topnav" id="myTopnav">
+           
+            
+            <a href="/search"  class="active"  >Hospitals</a>
+            <a href="#">Consultance</a>
+            <a href="#">Blood banks</a>
+            <a href="#">Diagnostics</a>
+            <a href="#">Ambulance</a>
+            <a href="#" style="color: #FF5353;">Emergency</a>
+            <!-- <a href="#home" class="active">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a> -->
+        
+        
+        <div style="position: relative;float: right;">
+        <a href="" class="search-icon"> <img src="/static/images/icons/searchlogo.png" alt="Menu Icon" ></a>
+                    <a class="loginbtna" href="" style="padding: 6px 30px;"><img class="loginbtn" src="/static/images/icons/loginbutton.png" alt="Menu Icon" style="height: 48px;" ></a>      
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i></a>
+            </div>
+        </div>
+        <!-- <img src="/static/images/icons/Group 7117.png" alt="Contact" class="phone"> -->
+
+
+    <br>
+            <h1 class="searchtext1">Search results</h1>
+            <div class="searchbox">
+                <div class="searchpagesearch">
+                    <form name="myForm" action="" class="allign" method = "POST"
+                enctype = "multipart/form-data"  >
+                {% csrf_token %}
+                    <div id="sch"><label for="loc">Your Location</label><img src="/static/images/icons/Group 7284.png" alt="" class="loc-icon1">
+                        <input  id="searchTextField" type="text"   autocomplete="on" class="searchinputtext" type="text"  value="{{address}}" name="Location" placeholder="Search your area">
+                        <!-- <input type="hidden" id="Latlng" name="Latlng" /> -->
+                    </div>
+                    <div id="sch"><label for="loc">Desease</label><img src="/static/images/icons/Group 7284.png" alt="" class="loc-icon1">
+                        <input class="searchinputtext"type="text" id="loc" name="disease" placeholder="Search Symptoms, Orga..">
+                    </div>
+                    <div id="sch"><label for="loc">Search Doctor</label><img src="/static/images/icons/Group 7284.png" alt="" class="loc-icon1">
+                        <input class="searchinputtext"type="text" id="loc" name="doctor" placeholder="Select Doctor">
+                    </div>
+                    <div id="schbtn">
+                        <button id= "button1" type="submit" name="Search">
+                            <p class="schtext" >Search
+                            <i class="fa fa-search"></i></p>
+                         <img src="images/icons/" alt="" class="sch-icon1"></p>   
+                        </button>
+                    </div>
+                </form>
+                </div>
+            
+            </div>
+
+            <p style="text-align: center;color: red;"><b>{{errormsg}}</b></p>
+
+
+
+
+<div class="container" style="margin-top: 233px;">
+
+<div class="tabs" >
+    <ul class="tabs-list">
+       <li class="active"><a href="#tab1">Hospital Near You</a></li>
+       <li ><a href="#tab2">Map</a></li>
+       <!-- <li ><a href="#tab3">Tab3</a></li> -->
+    </ul>
+  
+    <div id="tab1" class="tab active" style="overflow-y: scroll; height:1100px;">
+       <h3>Hospital Near You</h3>
+       
+       
+
+<div class="image-grid">
+{% for hospital in setshospitallist %}
+
+    <!-- <a href="/details/{{hospital.id}}"> -->
+  
+<div onclick="location.href='/details/{{hospital.id}}'" type="button" class="card">
+    <!-- <a href="/details/{{hospital.id}}"></a> -->
+<img  class="card-img" src="/show/{{ hospital.logo }}">
+    
+<span  class="tag tag-teal">{{hospital.hospital_type}}</span>
+<div  class="title">{{hospital.hospital_name}}</div>
+<p   class="cardleft"  >{{hospital.distance}} km</p>
+<div class="cardleft"  style="margin-top: -6px;">
+
+    <span> <img src="/static/images/icons/Star.png" alt=""></span>
+    <span> <img src="/static/images/icons/Star.png" alt=""></span>
+    <span> <img src="/static/images/icons/Star.png" alt=""></span>
+    <span> <img src="/static/images/icons/Star.png" alt=""></span>
+   
+</div>
+<div >
+    <a class="cardleft" href="tel:{{hospital.contact_number}}" style="text-decoration: none;"><img src="/static/images/icons/cardcall.png" alt="{{hospital.contact_number}}" ></a>
+    <div class="map">
+    <a   href="https://www.google.com/maps/dir/?api=1&destination={{hospital.address}}" style=""><img  src="/static/images/icons/map.png" alt="" style="padding: 10px;"></a>
+    </div>
+</div>
+<!-- </a> -->
+</div>
+<!-- </a> -->
+{% endfor %} 
+
+
+</div></div>
+</div></div>
+<!-- <div class="card">
+<img class="card-img" src="static\images\icons\Rectangle 841.png">
+<span class="tag tag-teal">PRIVATE</span>
+<div class="title">AIIMS HOSPITAL</div>
+<div style="margin-top: -6px;
+margin-left: -88px;">
+    <span> <img src="static\images\icons\Star.png" alt=""></span>
+    <span> <img src="static\images\icons\Star.png" alt=""></span>
+    <span> <img src="static\images\icons\Star.png" alt=""></span>
+    <span> <img src="static\images\icons\Star.png" alt=""></span>
+   
+</div>
+<div >
+    <a href="tel:6742545575" style="text-decoration: none;"><img src="static\images\icons\cardcall.png" alt="" style="margin-left: -54px;"></a>
+    <div class="map">
+    <a   href="https://goo.gl/maps/HAjHavR942zw9MaV9" style=""><img  src="static\images\icons\map.png" alt="" style="padding: 10px;"></a>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div id="tab2" class="tab">
+      <img src="static\images\searchmaptemp.png" alt="">
+    </div>
+    <div id="tab3" class="tab">
+      <h3>Tab3</h3>
+      <p>
+        The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens
+      </p>
+    </div>
+  
+  </div>
+</div>-->
+
+
+<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+<input id="loctext"  type='text' name='loc' style="visibility:hidden">
+   
+
+<p id="demo" style="visibility:hidden"></p>
+<!-- Foooterrrrrrrr Start---------- -->
+
+
+
+
+<div class="footerarea">
+
+<div class="container-fluid" style="margin-top: 180px;background-color: white;height: 105px;">
+    
+                    
+<div class=" cardmedia card footercard" style="width: 374px;text-align: none;align-items: baseline;">
+    <div class="footercardtext1">Emergency number</div>
+    <div class="footer-card-phone">
+        <img src="/static/images/icons/PhoneCall-footer.png" alt="call" >
+        108
+        <img src="/static/images/icons/Line.png" alt="call" >
+        <img class="footercardlogo" src="/static/images/icons/footer-logo.png" alt="call" >
+        
+    </div>
+    <div class="footercardtext2">Sweat is 99% water combined with a tiny amount of salt, proteins Sweat is 99% water combined...
+
+    </div>
+    <br><br>
+    <div class="footer-card-mail">
+    <img src="/static/images/icons/mail.png" alt="call" >
+    rah1234@gmail.com
+</div>
+
+
+<!-- 
+<div class="detail detail2">
+    <div class="columns">
+
+        <div class="column">
+            <li><strong>Company</strong></li>
+            <li>About Us</li>
+            <li>Blog</li>
+            <li>Contact us</li>
+            <li>Pricing</li>
+            <li>Testimonials</li>
+        </div>
+
+
+
+        <div class="column">
+            <li><strong>Support</strong></li>
+            <li>Help Center</li>
+            <li>Terms of service</li>
+            <li>Legal</li>
+            <li>Privacy Policy</li>
+            <li>Status</li>
+        </div>
+
+    </div>
+</div> -->
+     </div>
+
+</div>
+
+<div class="footerback">
+<div class="container-fluid " style="background-color: #16292A;height: 401px; ">
+</div></div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    
+      $(".tabs-list li a").click(function(e){
+         e.preventDefault();
+      });
+    
+      $(".tabs-list li").click(function(){
+         var tabid = $(this).find("a").attr("href");
+         $(".tabs-list li,.tabs div.tab").removeClass("active");   // removing active class from tab
+    
+         $(".tab").hide();   // hiding open tab
+         $(tabid).show();    // show tab
+         $(this).addClass("active"); //  adding active class to clicked tab
+    
+      });
+    
+    });
+    </script>
+
+
+<script>
+
+function myFunction() {
+var x = document.getElementById("myTopnav");
+if (x.className === "topnav" ) {
+x.className += " responsive";
+} else {
+x.className = "topnav";
+}
+}
+document.getElementById("second").onclick = function() {
+var x = document.getElementById("submenu");
+if(x.style.display === "none"){
+document.getElementById("submenu").style.display = "block";
+
+}
+else{
+document.getElementById("submenu").style.display = "none";
+
+}
+}
+</script>
+
+
+<script> 
+var swiper = new Swiper(".slide-content", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+pagination: {
+el: ".swiper-pagination",
+clickable: true,
+dynamicBullets: true,
+},
+navigation: {
+nextEl: ".swiper-button-next",
+prevEl: ".swiper-button-prev",
+},
+
+// breakpoints:{
+// 0: {
+// slidesPerView: 1,
+// },
+// 520: {
+// slidesPerView: 2,
+// },
+// 950: {
+// slidesPerView: 3,
+// },
+// },
+});
+
+
+
+
+
+
+
+var swiper = new Swiper(".slide-content1", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+pagination: {
+el: ".swiper-pagination",
+clickable: true,
+dynamicBullets: true,
+},
+navigation: {
+nextEl: ".swiper-button-next1",
+prevEl: ".swiper-button-prev1",
+},
+
+// breakpoints:{
+// 0: {
+// slidesPerView: 1,
+// },
+// 520: {
+// slidesPerView: 2,
+// },
+// 950: {
+// slidesPerView: 3,
+// },
+// },
+});
+
+
+</script>
+
+
+
+<script>
+    var x = document.getElementById("demo");
+    
+    function getLocationhosp() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+          x.innerHTML = position.coords.latitude + 
+          "," + position.coords.longitude;
+          document.getElementById("loctext").value =x.innerHTML
+        //   console.log(x.innerHTML)
+      
+        let loctext = document.getElementById("loctext").value;
+    
+        console.log(loctext)
+        
+    
+        if(!window.location.hash) {
+        const elemA = loctext;
+        var csrfmiddlewaretoken = '{{ csrf_token }}'  
+        var url = '/searchhosp/'+ elemA;
+        // history.pushState({}, "", url);
+        var csrfmiddlewaretoken = '{{ csrf_token }}'  
+        // window.location = window.location + '#loaded' + csrfmiddlewaretoken;
+        // window.location.reload();
+        // window.location=window.location.href(url)
+        // window.location.reload();
+        window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+    }
+    
+        }
+    
+    
+    
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+    
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                            var geolocation = JSON.parse(xhttp.responseText).location;
+                            var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+                            console.log(xhttp.responseText);
+                            var geolat = geolocation.lat;
+                            var geolang = geolocation.lng;
+                            console.log('located' + geolat +',' +geolang);
+                            console.log('accurate' + geoaccuracy + 'meters');
+                            var loctext = geolat +',' +geolang
+                            console.log(loctext)
+                            if(!window.location.hash) {
+                                const elemA = loctext;
+                                var csrfmiddlewaretoken = '{{ csrf_token }}'  
+                                var url = '/searchhospwoper/'+ elemA;
+                                // history.pushState({}, "", url);
+                                console.log(url)
+                                window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+                                }
+                        }
+                    };
+                    xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+                    xhttp.send();
+    
+                    x.innerHTML = "please enable location for better result"
+          break;
+        case error.POSITION_UNAVAILABLE:
+        var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                            var geolocation = JSON.parse(xhttp.responseText).location;
+                            var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+                            console.log(xhttp.responseText);
+                            var geolat = geolocation.lat;
+                            var geolang = geolocation.lng;
+                            console.log('located' + geolat +',' +geolang);
+                            console.log('accurate' + geoaccuracy + 'meters');
+                            var loctext = geolat +',' +geolang
+                            console.log(loctext)
+                            if(!window.location.hash) {
+                                const elemA = loctext;
+                                var csrfmiddlewaretoken = '{{ csrf_token }}'  
+                                var url = '/searchhospwoper/'+ elemA;
+                                // history.pushState({}, "", url);
+                                console.log(url)
+                                window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+                                }
+                        }
+                    };
+                    xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+                    xhttp.send();
+    
+          break;
+        case error.TIMEOUT:
+        var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                            var geolocation = JSON.parse(xhttp.responseText).location;
+                            var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+                            console.log(xhttp.responseText);
+                            var geolat = geolocation.lat;
+                            var geolang = geolocation.lng;
+                            console.log('located' + geolat +',' +geolang);
+                            console.log('accurate' + geoaccuracy + 'meters');
+                            var loctext = geolat +',' +geolang
+                            console.log(loctext)
+                            if(!window.location.hash) {
+                                const elemA = loctext;
+                                var csrfmiddlewaretoken = '{{ csrf_token }}'  
+                                var url = '/searchhospwoper/'+ elemA;
+                                // history.pushState({}, "", url);
+                                console.log(url)
+                                window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+                                }
+                        }
+                    };
+                    xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+                    xhttp.send();
+                    x.innerHTML = "please enable location for better result"
+          break;
+        case error.UNKNOWN_ERROR:
+        var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                            var geolocation = JSON.parse(xhttp.responseText).location;
+                            var geoaccuracy = JSON.parse(xhttp.responseText).accuracy;
+                            console.log(xhttp.responseText);
+                            var geolat = geolocation.lat;
+                            var geolang = geolocation.lng;
+                            console.log('located' + geolat +',' +geolang);
+                            console.log('accurate' + geoaccuracy + 'meters');
+                            var loctext = geolat +',' +geolang
+                            console.log(loctext)
+                            if(!window.location.hash) {
+                                const elemA = loctext;
+                                var csrfmiddlewaretoken = '{{ csrf_token }}'  
+                                var url = '/searchhospwoper/'+ elemA;
+                                // history.pushState({}, "", url);
+                                console.log(url)
+                                window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+                                }
+                        }
+                    };
+                    xhttp.open("POST", "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDEhzrjbx3rauluryLF6J-WslEdGjaBdxA",true);
+                    xhttp.send();
+                    x.innerHTML = "please enable location for better result"
+          break;
+      }
+    }
+    </script>
+
+<!--     
+<script>
+    var x = document.getElementById("demo");
+    // document.forms["myForm"].submit();
+    function getLocationhosp() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  
+    }
+    
+    function showPosition(position) {
+      x.innerHTML = position.coords.latitude + 
+      "," + position.coords.longitude;
+      document.getElementById("loctext").value =x.innerHTML
+    //   console.log(x.innerHTML)
+  
+    let loctext = document.getElementById("loctext").value;
+
+    console.log(loctext)
+    
+
+    if(!window.location.hash) {
+    const elemA = loctext;
+    var url = '/searchhosp/'+ elemA;
+    // history.pushState({}, "", url);
+    var csrfmiddlewaretoken = '{{ csrf_token }}'  
+    // window.location = window.location + '#loaded' + csrfmiddlewaretoken;
+    // window.location.reload();
+    window.parent.location=url + '#loaded'+ csrfmiddlewaretoken
+}
+
+
+
+    }
+    
+   
+</script> -->
+
+
+
+
+
+</body>
+</html>
